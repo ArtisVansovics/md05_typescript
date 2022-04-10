@@ -99,3 +99,66 @@ console.log('Tests of function 10 - complexCalc:');
 console.log(complexCalc(6, 5, 4, 3, 2, 1)); // 10.5
 console.log(complexCalc(6, 2, 1, 4, 2, 3)); // 2744
 console.log(complexCalc(2, 3, 6, 4, 2, 3)); // -8
+
+// Function 11
+
+const isNumberEven = (x: number): boolean => x % 2 === 0;
+
+console.log('Tests of function 11 - isNumberEven:');
+console.log(isNumberEven(10)); // true
+console.log(isNumberEven(-4)); // true
+console.log(isNumberEven(5)); // false
+console.log(isNumberEven(-111)); // false
+
+// Function 12
+
+const timesStringOccurs = (a: string, b: string): number => {
+  const re = new RegExp(`\\${a}`, 'g'); // Creating a new RegExp with a, "\\" used to allow special characters in pattern (double backslash because it's in a string)
+  return (b.match(re) || []).length;
+};
+
+console.log('Tests of function 12 - timesStringOccurs:');
+console.log(timesStringOccurs('m', 'how many times does the character occur in this sentence?')); // 2
+console.log(timesStringOccurs('h', 'how many times does the character occur in this sentence?')); // 4
+console.log(timesStringOccurs('?', 'how many times does the character occur in this sentence?')); // 1
+console.log(timesStringOccurs('z', 'how many times does the character occur in this sentence?')); // 0
+
+// Function 13
+
+const isNumberWhole = (a: number): boolean => Number.isInteger(a);
+
+console.log('Tests of function 13 - isNumberWhole:');
+console.log(isNumberWhole(4)); // true
+console.log(isNumberWhole(1.123)); // false
+console.log(isNumberWhole(1048)); // true
+console.log(isNumberWhole(10.48)); // false
+
+// Function 14
+
+const multiplyOrDivide = (a: number, b: number): number => {
+  if (a < b) {
+    return a / b;
+  }
+  return a * b;
+};
+
+console.log('Tests of function 14 - multiplyOrDivide:');
+console.log(multiplyOrDivide(10, 100)); // 0.1
+console.log(multiplyOrDivide(90, 45)); // 4050
+console.log(multiplyOrDivide(8, 20)); // 0.4
+console.log(multiplyOrDivide(2, 0.5)); // 1
+
+// Function 15
+
+const concatIfContains = (a: string, b: string): string => {
+  if (a.includes(b)) {
+    return b.concat(a);
+  }
+  return a.concat(b);
+};
+
+console.log('Tests of function 15 - concatIfContains:');
+console.log(concatIfContains('cheese', 'cake')); // 'cheesecake'
+console.log(concatIfContains('lips', 's')); // 'slips'
+console.log(concatIfContains('Java', 'script')); // 'Javascript'
+console.log(concatIfContains(' think, therefore I am', 'I')); // 'I think, therefore I am'
