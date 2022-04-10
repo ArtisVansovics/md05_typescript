@@ -162,3 +162,73 @@ console.log(concatIfContains('cheese', 'cake')); // 'cheesecake'
 console.log(concatIfContains('lips', 's')); // 'slips'
 console.log(concatIfContains('Java', 'script')); // 'Javascript'
 console.log(concatIfContains(' think, therefore I am', 'I')); // 'I think, therefore I am'
+
+// Function 16
+
+const roundNumTo2ndDigit = (a: number): number => Math.round(a * 100) / 100;
+
+console.log('Tests of function 16 - roundNumTo2ndDigit:');
+console.log(roundNumTo2ndDigit(2.12397)); // 2.12
+console.log(roundNumTo2ndDigit(3.136)); // 3.14
+console.log(roundNumTo2ndDigit(1.12397)); // 1.12
+console.log(roundNumTo2ndDigit(26.1379)); // 26.14
+
+// Function 17
+
+const splitNumToArray = (a: number): number[] => {
+  const numDigits: string[] = a.toString().split('');
+  return numDigits.map(Number);
+};
+
+console.log('Tests of function 17 - splitNumToArray:');
+console.log(splitNumToArray(10)); // [1,0]
+console.log(splitNumToArray(931)); // [9,3,1]
+console.log(splitNumToArray(193278)); // [1,9,3,2,7,8]
+
+// Function 18
+
+const cleanAndJoinStrings = (a: string, b: string): string => {
+  const cleanA: string = a.replace('%', '');
+  const cleanB: string = b.replace('%', '');
+  const capitalizeA: string = cleanA.charAt(0).toUpperCase() + cleanA.slice(1);
+  const reverseB: string = cleanB.split('').reverse().join('');
+  return capitalizeA + reverseB;
+};
+
+console.log('Tests of function 18 - cleanAndJoinStrings:');
+console.log(cleanAndJoinStrings('java', 'tpi%rcs')); // 'Javascript'
+console.log(cleanAndJoinStrings('c%ountry', 'edis')); // 'Countryside'
+console.log(cleanAndJoinStrings('down', 'nw%ot')); // 'Downtown'
+
+// Function 19
+
+const isNumPrime = (a: number): number => {
+  for (let i = 2; i < a; i += 1) {
+    if (a % i === 0) {
+      return isNumPrime(a + 1);
+    }
+  }
+  return a;
+};
+
+console.log('Tests of function 19 - isNumPrime:');
+console.log(isNumPrime(38)); // 41
+console.log(isNumPrime(7)); // 7
+console.log(isNumPrime(115)); // 127
+console.log(isNumPrime(2000)); // 2003
+
+// Function 20
+
+const isDivisible = (x: number, y: number): number => {
+  while (x % y !== 0) {
+    // eslint-disable-next-line no-param-reassign
+    x += 1;
+  }
+  return x;
+};
+
+console.log('Tests of function 20 - isDivisible:');
+console.log(isDivisible(1, 23)); // 23
+console.log(isDivisible(23, 23)); // 23
+console.log(isDivisible(7, 3)); // 9
+console.log(isDivisible(-5, 7)); // 0
