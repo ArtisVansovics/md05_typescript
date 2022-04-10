@@ -13,7 +13,6 @@
 // Task #0
 // human.name('Jānis') // returns Jānis
 
-
 // Tasks #1
 const math = {
   sum: () => () => (x: number, y: number) => ({
