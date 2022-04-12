@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { animals } from './arrays.ts';
+import { animals, countries } from './arrays.ts';
 
 /* CLASSWORK */
 console.log('___CLASSWORK___');
@@ -101,6 +101,20 @@ console.log(filterAnimals);
 // take array from https://stackoverflow.com/a/20623472/2927424
 // filter out countries that have less than 6 characters
 // modify array without nativeName key
+
+// eslint-disable-next-line max-len
+// const filterCountries = countries.filter((country: Record<string, unknown>) => Object.entries(country)[1][1].length > 6);
+// const filterCountries = countries.filter((country: Record<string, unknown>) =>
+//   Object.entries(country)[1][1].length > 6).map((country: Record<string, unknown>) =>
+//   Object.entries(country).slice(0, -1));
+// const fdfd = Object.entries(countries[0])[2];
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line max-len
+const filterCountries = Object.fromEntries(countries.filter((country: Record<string, unknown>) => Object.entries(country)[1][1].length > 6).map((country: Record<string, unknown>) => Object.entries(country).slice(0, -1)));
+
+console.log(filterCountries);
 
 /* SPREAD OPERATOR  */
 console.log('___SPREAD OPERATORS___');
