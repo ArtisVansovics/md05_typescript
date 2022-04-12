@@ -1,22 +1,22 @@
-const firstName = 'Jānis';
-const lastName = 'Bērziņš';
-
-const fullName = `${firstName} ${lastName}`;
+// const firstName = 'Jānis';
+// const lastName = 'Bērziņš';
+//
+// const fullName = `${firstName} ${lastName}`;
 
 // console.log(fullName);
 
 // number
 
 // boolean
-const age = 28;
-const oneDigit = 0;
+// const age = 28;
+// const oneDigit = 0;
 
 // console.log(!!(age))
 // console.log(Boolean(oneDigit))
 
 // Masīvi
 
-const fruits = ['Apple', 'Pear', 'Peach', 'Pommelo', 'Orange'];
+// const fruits = ['Apple', 'Pear', 'Peach', 'Pommelo', 'Orange'];
 
 // console.log(fruits.length);
 
@@ -40,20 +40,20 @@ fruits.forEach((fruit) => {
 })
  */
 
-const fruit = {
-  name: 'Apple',
-  color: 'green',
-  colorTypes: ['green', 'red'],
-  colorTypesDetailed: [
-    {
-      color: 'red',
-      age: 12,
-    },
-    {
-      color: 'green',
-      age: 22,
-    },
-  ],
-};
-
-console.log(fruit.colorTypesDetailed[1].color);
+// const fruit = {
+//   name: 'Apple',
+//   color: 'green',
+//   colorTypes: ['green', 'red'],
+//   colorTypesDetailed: [
+//     {
+//       color: 'red',
+//       age: 12,
+//     },
+//     {
+//       color: 'green',
+//       age: 22,
+//     },
+//   ],
+// };
+//
+// console.log(fruit.colorTypesDetailed[1].color);
