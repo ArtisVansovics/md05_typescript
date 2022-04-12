@@ -3,13 +3,15 @@
 import { animals } from './arrays.ts';
 
 /* CLASSWORK */
+console.log('___CLASSWORK___');
+
 // Task #-4
 
 const car = [{}, {
   name: 'Volvo',
 }];
 
-console.log(car[1].name); // Volvo
+console.log(car[1].name); // returns Volvo
 
 // Task #-3
 
@@ -17,7 +19,7 @@ const carTwo = {
   sum: () => '3000000EUR',
 };
 
-console.log(carTwo.sum()); // return 3000000EUR
+console.log(carTwo.sum()); // returns 3000000EUR
 
 // Task #-2
 
@@ -52,7 +54,7 @@ const math = {
   }),
 };
 
-console.log(math.sum()()(1, 3).sum); // return 13
+console.log(math.sum()()(1, 3).sum); // returns 13
 
 // Task #2
 const human = () => ({
@@ -74,11 +76,14 @@ const human = () => ({
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-console.log(human().rights[2][1].amendment[2].paragraph()); // 'Lorem Ipsum'
+console.log(human().rights[2][1].amendment[2].paragraph()); // returns 'Lorem Ipsum'
 
 // Task #3
 
-// console.log(mathPow(x, y)()()()()()()()()(z)); // returns powered x with y and sum powered by Z
+// eslint-disable-next-line max-len
+const mathPow = (x:number, y:number) => () => () => () => () => () => () => () => () => (z:number) => (x + y) ** z;
+
+console.log(mathPow(2, 3)()()()()()()()()(2)); // returns powered x with y and sum powered by Z
 
 // Task #4
 // Take animal array from
@@ -98,12 +103,71 @@ console.log(filterAnimals);
 // modify array without nativeName key
 
 /* SPREAD OPERATOR  */
+console.log('___SPREAD OPERATORS___');
 
 // Spread operator function A
 // Write a function that takes two number arrays as parameters
 // and return an array which contains elements from both arrays
 
+const combineArr = (a: number[], b: number[]): number[] => [...a, ...b];
+
+console.log('Tests of function A - combineArr:');
+console.log(combineArr([1, 2], [3, 4])); // [1, 2, 3, 4]
+console.log(combineArr([1, 2], [3, 4, 5, 6])); // [1, 2, 3, 4, 5, 6]
+
+// Spread operator function B
+// Write a function that takes an array and a string as parameters
+// and return an array which contains all elements from the given array
+// and the given string as the last element
+
+const addStringToEnd = (a: string[], b: string): string[] => [...a, b];
+
+console.log('Test of function B - addStringToEnd:');
+console.log(addStringToEnd(['Apple', 'Orange', 'Banana'], 'Kiwi')); // ['Apple', 'Orange', 'Banana', 'Kiwi']
+
+// Spread operator function C
+// Write a function that takes an array and a string as parameters
+// and return an array which contains all elements from the given array
+// and the given string as the first element
+
+const addStringToStart = (a: string[], b: string): string[] => [b, ...a];
+
+console.log('Test of function C - addStringToStart:');
+console.log(addStringToStart(['Apple', 'Orange', 'Banana'], 'Kiwi')); // ['Kiwi', 'Apple', 'Orange', 'Banana']
+
+// Spread operator function D
+// Write a function that takes two objects as parameters
+// and return an object which contains properties from both objects
+
+// eslint-disable-next-line max-len
+const combineObj = (a: Record<string, unknown>, b: Record<string, unknown>): Record<string, unknown> => ({ ...a, ...b });
+
+console.log('Tests of function D - combineObj:');
+console.log(combineObj({ a: 1, b: 2 }, { c: 3, d: 4 })); // { a:1, b:2, c:3, d:4 }
+
+console.log(combineObj(
+  {
+    a: 1, b: 2,
+  },
+  {
+    c: 3, d: 4, e: 5, f: 6,
+  },
+)); // { a:1, b:2, c:3, d:4, e:5, f:6 }
+
+// Spread operator function E
+// Write a function that takes an object and a string as parameters
+// and return an object which contains properties from the given object
+// and a new property favoriteMovie with the value equal to the given string
+
+// eslint-disable-next-line max-len
+const addStringToObj = (a: Record<string, unknown>, b: string): Record<string, unknown> => ({ ...a, favoriteMovie: b });
+
+console.log('Tests of function E - addStringToObj:');
+console.log(addStringToObj({ eyeColor: 'green', age: 10 }, 'Garfield')); // { eyeColor: 'green', age: 10, favoriteMovie:  'Garfield' }
+console.log(addStringToObj({ eyeColor: 'blue', age: 15 }, 'Twilight')); // { eyeColor: 'blue', age: 15, favoriteMovie:  'Twilight' }
+
 /* HOMEWORK */
+console.log('___HOMEWORK___');
 
 // Function Example
 
