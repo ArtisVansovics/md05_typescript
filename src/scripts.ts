@@ -417,3 +417,82 @@ console.log(isDivisible(1, 23)); // 23
 console.log(isDivisible(23, 23)); // 23
 console.log(isDivisible(7, 3)); // 9
 console.log(isDivisible(-5, 7)); // 0
+
+// Function 21
+
+const insertString = (a: string, b: string): string => {
+  let i = 3;
+  const result = [];
+  while (i < a.length + 3) {
+    result.unshift(a.slice(-i, (a.length - (i - 3))));
+    i += 3;
+  }
+  return result.join(b);
+};
+
+console.log('Tests of function 21 - insertString:');
+console.log(insertString('1234567', '.')); // '1.234.567'
+console.log(insertString('abcde', '$')); // 'ab$cde'
+console.log(insertString('zxyzxyzxyzxyzxyz', 'w')); // 'zwxyzwxyzwxyzwxyzwxyz'
+
+// Function 22
+
+const incrementToNextLetter = (a: string): string => {
+  let i = 0;
+  const result = [];
+  while (i < a.length) {
+    result.push(String.fromCharCode(a.charCodeAt(i) + 1));
+    i += 1;
+  }
+  return result.join('');
+};
+
+console.log('Tests of function 22 - incrementToNextLetter:');
+console.log(incrementToNextLetter('bnchmf')); // 'coding'
+console.log(incrementToNextLetter('bgddrd')); // 'cheese'
+console.log(incrementToNextLetter('sdrshmf')); // 'testing'
+
+// Function 23
+
+const nthElementOfArr = (a: number[], n: number): number => a[n - 1];
+
+console.log('Tests of function 23 - incrementToNextLetter:');
+console.log(nthElementOfArr([1, 2, 3, 4, 5], 3)); // 3
+console.log(nthElementOfArr([10, 9, 8, 7, 6], 5)); // 6
+console.log(nthElementOfArr([7, 2, 1, 6, 3], 1)); // 7
+
+// Function 24
+
+const removeFirstThreeOfArr = (a: number[]): number[] => a.slice(3);
+
+console.log('Tests of function 24 - removeFirstThreeOfArr:');
+console.log(removeFirstThreeOfArr([1, 2, 3, 4])); // [4]
+console.log(removeFirstThreeOfArr([5, 4, 3, 2, 1, 0])); // [2,1,0]
+console.log(removeFirstThreeOfArr([99, 1, 1])); // []
+
+// Function 25
+
+const extractLastThreeOfArr = (a: number[]): number[] => a.slice(-3);
+
+console.log('Tests of function 25 - extractLastThreeOfArr:');
+console.log(extractLastThreeOfArr([1, 2, 3, 4])); // [2,3,4]
+console.log(extractLastThreeOfArr([5, 4, 3, 2, 1, 0])); // [2,1,0]
+console.log(extractLastThreeOfArr([99, 1, 1])); // [99,1,1]
+
+// Function 26
+
+const extractFirstThreeOfArr = (a: number[]): number[] => a.slice(0, 3);
+
+console.log('Tests of function 26 - extractFirstThreeOfArr:');
+console.log(extractFirstThreeOfArr([1, 2, 3, 4])); // [1,2,3]
+console.log(extractFirstThreeOfArr([5, 4, 3, 2, 1, 0])); // [5,4,3]
+console.log(extractFirstThreeOfArr([99, 1, 1])); // [99,1,1]
+
+// Function 27
+
+const extractLastNthOfArr = (a: number[], n: number): number[] => a.slice(-n);
+
+console.log('Tests of function 27 - extractLastNthOfArr:');
+console.log(extractLastNthOfArr([1, 2, 3, 4, 5], 2)); // [ 4, 5 ]
+console.log(extractLastNthOfArr([1, 2, 3], 6)); // [ 1, 2, 3 ]
+console.log(extractLastNthOfArr([1, 2, 3, 4, 5, 6, 7, 8], 3)); // [ 6, 7, 8 ]
