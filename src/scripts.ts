@@ -64,9 +64,7 @@ const human = () => ({
     [
       [],
       {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        amendment: [[], [], {
+        amendment: [{}, [], {
           paragraph: () => 'Lorem Ipsum',
         }],
       },
@@ -182,6 +180,8 @@ console.log(addStringToObj({ eyeColor: 'blue', age: 15 }, 'Twilight')); // { eye
 
 /* HOMEWORK */
 console.log('___HOMEWORK___');
+
+type mixedArr = string | number | boolean
 
 // Function Example
 
@@ -496,3 +496,150 @@ console.log('Tests of function 27 - extractLastNthOfArr:');
 console.log(extractLastNthOfArr([1, 2, 3, 4, 5], 2)); // [ 4, 5 ]
 console.log(extractLastNthOfArr([1, 2, 3], 6)); // [ 1, 2, 3 ]
 console.log(extractLastNthOfArr([1, 2, 3, 4, 5, 6, 7, 8], 3)); // [ 6, 7, 8 ]
+
+// Function 28
+
+const filterOutOfArr = (a: mixedArr[], b: mixedArr): mixedArr[] => a.filter((item) => item !== b);
+
+console.log('Tests of function 28 - filterOutOfArr:');
+console.log(filterOutOfArr([1, 2, 3], 2)); // [1, 3]
+console.log(filterOutOfArr([1, 2, '2'], '2')); // [1, 2]
+console.log(filterOutOfArr([false, '2', 1], false)); // ['2', 1]
+console.log(filterOutOfArr([1, 2, '2', 1], 1)); // [2, '2']
+
+// Function 29
+
+const numberOfElements = (a: number[]): number => a.length;
+
+console.log('Tests of function 29 - numberOfElements:');
+console.log(numberOfElements([1, 2, 2, 4])); // 4
+console.log(numberOfElements([9, 9, 9])); // 3
+console.log(numberOfElements([4, 3, 2, 1, 0])); // 5
+
+// Function 30
+
+const numberOfNegatives = (a: number[]): number => (a.filter((item) => item < 0)).length;
+
+console.log('Tests of function 30 - numberOfNegatives:');
+console.log(numberOfNegatives([1, -2, 2, -4])); // 2
+console.log(numberOfNegatives([0, 9, 1])); // 0
+console.log(numberOfNegatives([4, -3, 2, 1, 0])); // 1
+
+// Function 31
+
+const sortArrDescending = (a: number[]): number[] => (
+  a.sort((x, y) => (
+    y - x))
+);
+
+console.log('Tests of function 31 - sortArrDescending:');
+console.log(sortArrDescending([1, 3, 2])); // [3,2,1]
+console.log(sortArrDescending([4, 2, 3, 1])); // [4,3,2,1]
+
+// Function 32
+
+const sortArrAlphabetic = (a: string[]): string[] => (
+  a.sort((x, y) => (
+    x.charCodeAt(0) - y.charCodeAt(0)))
+);
+
+console.log('Tests of function 32 - sortArrAlphabetic:');
+console.log(sortArrAlphabetic(['b', 'c', 'd', 'a'])); // ['a', 'b', 'c', 'd']
+console.log(sortArrAlphabetic(['z', 'c', 'd', 'a', 'y', 'a', 'w'])); // ['a', 'a', 'c', 'd', 'w', 'y', 'z']
+
+// Function 33
+
+const averageOfArr = (a: number[]): number => (
+  a.reduce((x, y) => x + y, 0) / a.length
+);
+
+console.log('Tests of function 33 - averageOfArr:');
+console.log(averageOfArr([10, 100, 40])); // 50
+console.log(averageOfArr([10, 100, 1000])); // 370
+console.log(averageOfArr([-50, 0, 50, 200])); // 50
+
+// Function 34
+
+const longestString = (a: string[]): string => (
+  a.reduce((x, y) => (
+    x.length > y.length ? x : y
+  ))
+);
+
+console.log('Tests of function 34 - longestString:');
+console.log(longestString(['help', 'me'])); // 'help'
+console.log(longestString(['I', 'need', 'candy'])); // 'candy'
+
+// Function 35
+
+const areAllEqual = (a: mixedArr[]): boolean => a.every((x) => (
+  x === a[0]
+));
+
+console.log('Tests of function 35 - areAllEqual:');
+console.log(areAllEqual([true, true, true, true])); // true
+console.log(areAllEqual(['test', 'test', 'test'])); // true
+console.log(areAllEqual([1, 1, 1, 2])); // false
+console.log(areAllEqual(['10', 10, 10, 10])); // false
+
+// Function 36
+
+const putAllValuesInOneArr = (...values: (mixedArr[])[]): mixedArr[] => (
+  [].concat(...values)
+);
+
+console.log('Tests of function 36 - putAllValuesInOneArr:');
+console.log(putAllValuesInOneArr([1, 2, 3], [4, 5, 6])); // [1, 2, 3, 4, 5, 6]
+console.log(putAllValuesInOneArr(['a', 'b', 'c'], [4, 5, 6])); // ['a', 'b', 'c', 4, 5, 6]
+console.log(putAllValuesInOneArr([true, true], [1, 2], ['a', 'b'])); // [true, true, 1, 2, 'a', 'b']
+
+// Function 37
+
+const sortObjArrByPropertyB = (n: {a: number, b: number}[]): {a: number, b: number}[] => (
+  n.sort((x, y) => (
+    x.b - y.b
+  ))
+);
+
+console.log('Tests of function 37 - sortObjArrByPropertyB:');
+console.log(sortObjArrByPropertyB([{ a: 1, b: 2 }, { a: 5, b: 4 }])); // [{a:1,b:2},{a:5,b:4}]
+console.log(sortObjArrByPropertyB([{ a: 2, b: 10 }, { a: 5, b: 4 }])); // [{a:5,b:4},{a:2,b:10}]
+console.log(sortObjArrByPropertyB([{ a: 1, b: 7 }, { a: 2, b: 1 }])); // [{a:2,b:1},{a:1,b:7}]
+
+// Function 38
+
+const mergeAndSortArrAscendingWithoutDuplicates = (a: number[], b: number[]): number[] => (
+  [...new Set(a.concat(b))].sort((x, y) => (
+    x - y
+  ))
+);
+
+console.log('Tests of function 38 - mergeAndSortArrAscendingWithoutDuplicates:');
+console.log(mergeAndSortArrAscendingWithoutDuplicates([1, 2, 3], [3, 4, 5])); // [ 1, 2, 3, 4, 5 ]
+console.log(mergeAndSortArrAscendingWithoutDuplicates([-10, 22, 333, 42], [-11, 5, 22, 41, 42]));
+// [ -11, -10, 5, 22, 41,  42, 333]
+
+// Function 39
+
+const sumAllGreaterThanB = (a: number[], b: number): number => (
+  a.filter((numA) => numA > b).reduce((x, y) => (
+    x + y
+  ))
+);
+
+console.log('Tests of function 39 - sumAllGreaterThanB:');
+console.log(sumAllGreaterThanB([1, 2, 3, 4, 5, 6, 7], 2)); // 25
+console.log(sumAllGreaterThanB([-10, -11, -3, 1, -4], -3)); // 1
+console.log(sumAllGreaterThanB([78, 99, 100, 101, 401], 99)); // 602
+
+// Function 40
+
+const rangeFromMinToMax = (numMin: number, numMax: number): number[] => (
+  Array.from({ length: (numMax + 1 - numMin) }, (x, y) => y + numMin)
+);
+
+console.log('Tests of function 40 - rangeFromMinToMax:');
+console.log(rangeFromMinToMax(2, 10)); // [2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(rangeFromMinToMax(1, 3)); // [1, 2, 3]
+console.log(rangeFromMinToMax(-5, 5)); // [-5, -4, -3, -2, -1, 0,  1,  2,  3,  4, 5]
+console.log(rangeFromMinToMax(2, 7)); // [2, 3, 4, 5, 6, 7]
