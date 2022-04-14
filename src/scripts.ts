@@ -181,7 +181,7 @@ console.log(addStringToObj({ eyeColor: 'blue', age: 15 }, 'Twilight')); // { eye
 /* HOMEWORK */
 console.log('___HOMEWORK___');
 
-type mixedArr = string | number | boolean
+type mixedVal = string | number | boolean
 
 // Function Example
 
@@ -499,7 +499,7 @@ console.log(extractLastNthOfArr([1, 2, 3, 4, 5, 6, 7, 8], 3)); // [ 6, 7, 8 ]
 
 // Function 28
 
-const filterOutOfArr = (a: mixedArr[], b: mixedArr): mixedArr[] => a.filter((item) => item !== b);
+const filterOutOfArr = (a: mixedVal[], b: mixedVal): mixedVal[] => a.filter((item) => item !== b);
 
 console.log('Tests of function 28 - filterOutOfArr:');
 console.log(filterOutOfArr([1, 2, 3], 2)); // [1, 3]
@@ -572,7 +572,7 @@ console.log(longestString(['I', 'need', 'candy'])); // 'candy'
 
 // Function 35
 
-const areAllEqual = (a: mixedArr[]): boolean => a.every((x) => (
+const areAllEqual = (a: mixedVal[]): boolean => a.every((x) => (
   x === a[0]
 ));
 
@@ -584,7 +584,7 @@ console.log(areAllEqual(['10', 10, 10, 10])); // false
 
 // Function 36
 
-const putAllValuesInOneArr = (...values: (mixedArr[])[]): mixedArr[] => (
+const putAllValuesInOneArr = (...values: (mixedVal[])[]): mixedVal[] => (
   [].concat(...values)
 );
 
@@ -643,3 +643,71 @@ console.log(rangeFromMinToMax(2, 10)); // [2, 3, 4, 5, 6, 7, 8, 9, 10]
 console.log(rangeFromMinToMax(1, 3)); // [1, 2, 3]
 console.log(rangeFromMinToMax(-5, 5)); // [-5, -4, -3, -2, -1, 0,  1,  2,  3,  4, 5]
 console.log(rangeFromMinToMax(2, 7)); // [2, 3, 4, 5, 6, 7]
+
+// Function 41
+
+// const arrToObjectByFirstLetter = (arr: string[]): object => (
+//
+// );
+//
+console.log('Tests of function 41 - arrToObjectByFirstLetter:');
+// console.log(arrToObjectByFirstLetter(['Alf', 'Alice', 'Ben']));
+// { a: ['Alf', 'Alice'], b: ['Ben']}
+// console.log(arrToObjectByFirstLetter(['Ant', 'Bear', 'Bird']));
+// { a: ['Ant'], b: ['Bear', 'Bird']}
+// console.log(arrToObjectByFirstLetter(['Berlin', 'Paris', 'Prague']));
+// { b: ['Berlin'], p: ['Paris', 'Prague']}
+
+// Function 42
+
+const newArrStartingWithNum = (arr: mixedVal[], n: number): mixedVal[] => {
+  const newArr = [...arr];
+  if (n < 6) {
+    newArr.unshift(0);
+  } else newArr.unshift(n);
+  return newArr;
+};
+
+console.log('Tests of function 42 - newArrStartingWithNum:');
+console.log(newArrStartingWithNum([1, 2, 3], 6)); // [6,1,2,3]
+console.log(newArrStartingWithNum(['a', 'b'], 2)); // [0,'a','b']
+console.log(newArrStartingWithNum([null, false], 11)); // [11,null,false]
+
+// Function 43
+
+const saveEveryNthToNewArr = (arr: mixedVal[], n: number): mixedVal[] => {
+  const newArr = [...arr];
+  return newArr.filter((arrEl, i) => (
+    i % n === n - 1));
+};
+
+console.log('Tests of function 43 - saveEveryNthToNewArr:');
+console.log(saveEveryNthToNewArr([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3)); // [3,6,9]
+console.log(saveEveryNthToNewArr([10, 9, 8, 7, 6, 5, 4, 3, 2, 1], 5)); // [6,1]
+console.log(saveEveryNthToNewArr([7, 2, 1, 6, 3, 4, 5, 8, 9, 10], 2)); // [2,6,4,8,10]
+
+// Function 44
+
+type countryObject = {
+  [key: string]: string,
+  country: string,
+};
+
+const returnCountryKeyValue = (obj: countryObject): string => obj.country;
+
+console.log('Tests of function 44 - returnCountryKeyValue:');
+console.log(returnCountryKeyValue({ continent: 'Asia', country: 'Japan' })); // 'Japan'
+console.log(returnCountryKeyValue({ country: 'Sweden', continent: 'Europe' })); // 'Sweden'
+
+// Function 45
+
+type propTwoObject = {
+  [key: string]: string | number,
+  'prop-2': string | number,
+};
+
+const returnPropTwoKeyValue = (obj: propTwoObject): string | number => obj['prop-2'];
+
+console.log('Tests of function 45 - returnPropTwoKeyValue:');
+console.log(returnPropTwoKeyValue({ one: 1, 'prop-2': 2 })); // 2
+console.log(returnPropTwoKeyValue({ 'prop-2': 'two', prop: 'test' })); // 'two'
