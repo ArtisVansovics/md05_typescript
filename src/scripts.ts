@@ -689,7 +689,7 @@ console.log(saveEveryNthToNewArr([7, 2, 1, 6, 3, 4, 5, 8, 9, 10], 2)); // [2,6,4
 // Function 44
 
 type countryObject = {
-  [key: string]: string,
+  continent: string,
   country: string,
 };
 
@@ -711,3 +711,65 @@ const returnPropTwoKeyValue = (obj: propTwoObject): string | number => obj['prop
 console.log('Tests of function 45 - returnPropTwoKeyValue:');
 console.log(returnPropTwoKeyValue({ one: 1, 'prop-2': 2 })); // 2
 console.log(returnPropTwoKeyValue({ 'prop-2': 'two', prop: 'test' })); // 'two'
+
+// Function 46
+
+type stringKeyObject = {
+  [key: string]: string,
+};
+
+const returnValueOfStringKey = (obj: stringKeyObject, x: string): string => obj[x];
+
+console.log('Tests of function 46 - returnValueOfStringKey:');
+console.log(returnValueOfStringKey({ continent: 'Asia', country: 'Japan' }, 'continent')); // 'Asia'
+console.log(returnValueOfStringKey({ country: 'Sweden', continent: 'Europe' }, 'country')); // 'Sweden'
+
+// Function 47
+
+type unknownValuesObj = {
+  [key: string | number]: string | number | boolean,
+};
+
+const doesObjHaveProperty = (a: unknownValuesObj, b: string): boolean => (
+  Object.prototype.hasOwnProperty.call(a, b)
+);
+
+console.log('Tests of function 47 - doesObjHaveProperty:');
+console.log(doesObjHaveProperty({ a: 1, b: 2, c: 3 }, 'b')); // true
+console.log(doesObjHaveProperty({ x: 'a', y: 'b', z: 'c' }, 'a')); // false
+console.log(doesObjHaveProperty({ x: 'a', y: 'b', z: 'c' }, 'z')); // true
+
+// Function 48
+
+const createObjWithKeyPropertyValue = (a: string): unknownValuesObj => (
+  Object.fromEntries([['key', a]])
+);
+
+console.log('Tests of function 48 - createObjWithKeyPropertyValue:');
+console.log(createObjWithKeyPropertyValue('a')); // {key:'a'}
+console.log(createObjWithKeyPropertyValue('z')); // {key:'z'}
+console.log(createObjWithKeyPropertyValue('b')); // {key:'b'}
+
+// Function 49
+
+const createObjWithGivenKeyPropertyValue = (a: string, b: string): unknownValuesObj => (
+  Object.fromEntries([[a, b]])
+);
+
+console.log('Tests of function 49 - createObjWithGivenKeyPropertyValue:');
+console.log(createObjWithGivenKeyPropertyValue('a', 'b')); // {a:'b'}
+console.log(createObjWithGivenKeyPropertyValue('z', 'x')); // {z:'x'}
+console.log(createObjWithGivenKeyPropertyValue('b', 'w')); // {b:'w'}
+
+// Function 50
+
+const createObjFromTwoArr = (a: (string | number)[], b: (string | number)[]): unknownValuesObj => (
+  a.reduce((accumulator, element, index) => (
+    { ...accumulator, [element]: b[index] }
+  ), {})
+);
+
+console.log('Tests of function 50 - createObjFromTwoArr:');
+console.log(createObjFromTwoArr(['a', 'b', 'c'], [1, 2, 3])); // {a:1,b:2,c:3}
+console.log(createObjFromTwoArr(['w', 'x', 'y', 'z'], [10, 9, 5, 2])); // {w:10,x:9,y:5,z:2}
+console.log(createObjFromTwoArr([1, 'b'], ['a', 2])); // {1:'a',b:2}
