@@ -773,3 +773,84 @@ console.log('Tests of function 50 - createObjFromTwoArr:');
 console.log(createObjFromTwoArr(['a', 'b', 'c'], [1, 2, 3])); // {a:1,b:2,c:3}
 console.log(createObjFromTwoArr(['w', 'x', 'y', 'z'], [10, 9, 5, 2])); // {w:10,x:9,y:5,z:2}
 console.log(createObjFromTwoArr([1, 'b'], ['a', 2])); // {1:'a',b:2}
+
+// Function 51
+
+const createArrFromObjKeys = (a: unknownValuesObj): string[] => (
+  Object.keys(a)
+);
+
+console.log('Tests of function 51 - createArrFromObjKeys:');
+console.log(createArrFromObjKeys({ a: 1, b: 2, c: 3 })); // ['a','b','c']
+console.log(createArrFromObjKeys({
+  j: 9, i: 2, x: 3, z: 4,
+})); // ['j','i','x','z']
+console.log(createArrFromObjKeys({ w: 15, x: 22, y: 13 })); // ['w','x','y']
+
+// Function 52
+
+const sumOfObjValues = (a: { [key: string]: number }): number => (
+  Object.values(a).reduce((x, y) => x + y)
+);
+
+console.log('Tests of function 52 - sumOfObjValues:');
+console.log(sumOfObjValues({ a: 1, b: 2, c: 3 })); // 6
+console.log(sumOfObjValues({
+  j: 9, i: 2, x: 3, z: 4,
+})); // 18
+console.log(sumOfObjValues({ w: 15, x: 22, y: 13 })); // 50
+
+// Function 53
+
+const removePropertyBFromObj = (a: { [key: string]: number }): { [key: string]: number } => {
+  const newObj = { ...a };
+  delete newObj.b;
+  return newObj;
+};
+
+console.log('Tests of function 53 - removePropertyBFromObj:');
+console.log(removePropertyBFromObj({ a: 1, b: 7, c: 3 })); // { a: 1, c: 3 }
+console.log(removePropertyBFromObj({ b: 0, a: 7, d: 8 })); // { a: 7, d: 8 }
+console.log(removePropertyBFromObj({
+  e: 6, f: 4, b: 5, a: 3,
+})); // { e: 6, f: 4, a: 3 }
+
+// Function 54
+
+// eslint-disable-next-line max-len
+const mergeTwoObjsAndCorrectSecondB = (obj1: { [key: string]: number }, obj2: { [key: string]: number }): { [key: string]: number } => {
+  const newObj1 = { ...obj1 };
+  const newObj2 = { ...obj2 };
+  newObj2.d = newObj2.b;
+  delete newObj2.b;
+  return { ...newObj1, ...newObj2 };
+};
+
+console.log('Tests of function 54 - mergeTwoObjsAndCorrectSecondB:');
+console.log(mergeTwoObjsAndCorrectSecondB({ a: 1, b: 2 }, { c: 3, b: 4, e: 5 }));
+// { a: 1, b: 2, c: 3, e: 5, d: 4}
+console.log(mergeTwoObjsAndCorrectSecondB({ a: 5, b: 4 }, { c: 3, b: 1, e: 2 }));
+// { a: 5, b: 4, c: 3, e: 2, d: 1}
+
+// Function 55
+
+// eslint-disable-next-line max-len
+const multiplyAllObjValuesByN = (obj: { [key: string]: number }, n: number): { [key: string]: number } => {
+  const newObj = { ...obj };
+  for (const key in newObj) {
+    if (typeof newObj[key] === 'number') {
+      newObj[key] *= n;
+    }
+  }
+  return newObj;
+};
+
+console.log('Tests of function 55 - multiplyAllObjValuesByN:');
+console.log(multiplyAllObjValuesByN({ a: 1, b: 2, c: 3 }, 3));
+// {a:3,b:6,c:9}
+console.log(multiplyAllObjValuesByN({
+  j: 9, i: 2, x: 3, z: 4,
+}, 10));
+// {j:90,i:20,x:30,z:40}
+console.log(multiplyAllObjValuesByN({ w: 15, x: 22, y: 13 }, 6));
+// {w:90,x:132,y:78}
