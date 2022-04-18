@@ -854,3 +854,66 @@ console.log(multiplyAllObjValuesByN({
 // {j:90,i:20,x:30,z:40}
 console.log(multiplyAllObjValuesByN({ w: 15, x: 22, y: 13 }, 6));
 // {w:90,x:132,y:78}
+
+// Function 56
+
+// eslint-disable-next-line max-len
+const swapObjKeysAndValues = (a: { [key: string]: string | number }): { [key: string]: string | number } => (
+  Object.fromEntries(Object.entries(a).map((x) => x.reverse()))
+);
+
+console.log('Tests of function 56 - swapObjKeysAndValues:');
+console.log(swapObjKeysAndValues({
+  z: 'a', y: 'b', x: 'c', w: 'd',
+})); // {a:'z',b:'y',c:'x',d:'w'}
+console.log(swapObjKeysAndValues({
+  2: 'a', 4: 'b', 6: 'c', 8: 'd',
+})); // {a:'2',b:'4',c:'6',d:'8'}
+console.log(swapObjKeysAndValues({
+  a: 1, z: 24,
+})); // {1:'a',24:'z'}
+
+// Function 57
+
+const replaceEmptyObjValuesWithNull = (a: { [key: string]: string }): { [key: string]: string } => {
+  const newObj = { ...a };
+  for (const key in newObj) {
+    if (newObj[key] === '' || newObj[key] === ' ') {
+      newObj[key] = null;
+    }
+  }
+  return newObj;
+};
+
+console.log('Tests of function 57 - replaceEmptyObjValuesWithNull:');
+console.log(replaceEmptyObjValuesWithNull({
+  a: 'a', b: 'b', c: '',
+})); // { a: 'a', b: 'b', c: null }
+console.log(replaceEmptyObjValuesWithNull({
+  a: '', b: 'b', c: ' ', d: 'd',
+})); // { a: null, b: 'b', c: null, d: 'd' }
+console.log(replaceEmptyObjValuesWithNull({
+  a: 'a', b: 'b ', c: ' ', d: '',
+})); // { a: 'a', b: 'b ', c: null, d: null }
+
+// Function 58
+
+// Function 59
+
+// eslint-disable-next-line max-len
+const addPropertyContinentWithValueToObj = (a: { [key: string]: string }[], b: string): { [p: string]: string }[] => {
+  const newObjArr = [...a];
+  newObjArr.forEach((object) => {
+    // eslint-disable-next-line no-param-reassign
+    object.continent = b;
+  });
+  return newObjArr;
+};
+
+console.log('Tests of function 59 - addPropertyContinentWithValueToObj:');
+console.log(addPropertyContinentWithValueToObj([{ city: 'Tokyo', country: 'Japan' }, { city: 'Bangkok', country: 'Thailand' }], 'Asia'));
+// eslint-disable-next-line max-len
+// [{ city: 'Tokyo', country: 'Japan', continent: 'Asia' }, { city: 'Bangkok', country: 'Thailand', continent: 'Asia' }]
+console.log(addPropertyContinentWithValueToObj([{ city: 'Stockholm', country: 'Sweden' }, { city: 'Paris', country: 'France' }], 'Europe'));
+// eslint-disable-next-line max-len
+// [{ city: 'Stockholm', country: 'Sweden', continent: 'Europe' }, { city: 'Paris', country: 'France', continent: 'Europe' }]
