@@ -917,3 +917,67 @@ console.log(addPropertyContinentWithValueToObj([{ city: 'Tokyo', country: 'Japan
 console.log(addPropertyContinentWithValueToObj([{ city: 'Stockholm', country: 'Sweden' }, { city: 'Paris', country: 'France' }], 'Europe'));
 // eslint-disable-next-line max-len
 // [{ city: 'Stockholm', country: 'Sweden', continent: 'Europe' }, { city: 'Paris', country: 'France', continent: 'Europe' }]
+
+// Function 60
+
+const arrOfNumbersWithOccurrencesToObj = (a: number[]): { [key: number]: number } => {
+  const newObj: { [key: number]: number } = {};
+  for (const element of a) {
+    if (newObj[element]) {
+      newObj[element] += 1;
+    } else {
+      newObj[element] = 1;
+    }
+  }
+  return newObj;
+};
+
+console.log('Tests of function 60 - arrOfNumbersWithOccurrencesToObj:');
+console.log(arrOfNumbersWithOccurrencesToObj([1, 2, 2, 3])); // {1:1,2:2,3:1}
+console.log(arrOfNumbersWithOccurrencesToObj([9, 9, 9, 99])); // {9:3,99:1}
+console.log(arrOfNumbersWithOccurrencesToObj([4, 3, 2, 1])); // {1:1,2:1,3:1,4:1}
+
+// Function 61
+
+const areDatesEqual = (a: Date, b: Date): boolean => {
+  const aDate = new Date(a);
+  const bDate = new Date(b);
+  return aDate.getTime() === bDate.getTime();
+};
+
+console.log('Tests of function 61 - areDatesEqual:');
+console.log(areDatesEqual(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:45:00'))); // false
+console.log(areDatesEqual(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:00:00'))); // true
+console.log(areDatesEqual(new Date('2001/01/01 08:00:00'), new Date('2000/01/01 08:00:00'))); // false
+
+// Function 62
+
+const daysBetweenDates = (a: Date, b: Date): number => {
+  const aDate = new Date(a);
+  const bDate = new Date(b);
+  let result;
+  if (aDate >= bDate) {
+    result = (aDate.getTime() - bDate.getTime()) / (1000 * 3600 * 24);
+  } else result = (bDate.getTime() - aDate.getTime()) / (1000 * 3600 * 24);
+  return result;
+};
+
+console.log('Tests of function 62 - daysBetweenDates:');
+console.log(daysBetweenDates(new Date('2020-06-11'), new Date('2020-06-01'))); // 10
+console.log(daysBetweenDates(new Date('2000-01-01'), new Date('2020-06-01'))); // 7457
+
+// Function 63
+
+const areDaysTheSame = (a: Date, b: Date): boolean => {
+  const aDate = new Date(a);
+  const bDate = new Date(b);
+  return aDate.getFullYear() === bDate.getFullYear()
+    && aDate.getMonth() === bDate.getMonth()
+    && aDate.getDate() === bDate.getDate();
+};
+
+console.log('Tests of function 63 - areDaysTheSame:');
+console.log(areDaysTheSame(new Date('2000/01/01'), new Date('2000/01/01'))); // true
+console.log(areDaysTheSame(new Date('2000/01/01'), new Date('2000/01/02'))); // false
+console.log(areDaysTheSame(new Date('2001/01/01'), new Date('2000/01/01'))); // false
+console.log(areDaysTheSame(new Date('2000/11/01'), new Date('2000/01/01'))); // false
