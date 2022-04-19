@@ -1,99 +1,101 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { animals, countries } from './arrays.ts';
-
+// import { animals, countries } from './arrays.ts';
+//
 /* CLASSWORK */
-console.log('___CLASSWORK___');
-
-// Task #-4
-
-const car = [{}, {
-  name: 'Volvo',
-}];
-
-console.log(car[1].name); // returns Volvo
-
-// Task #-3
-
-const carTwo = {
-  sum: () => '3000000EUR',
-};
-
-console.log(carTwo.sum()); // returns 3000000EUR
-
-// Task #-2
-
-const carThree = {
-  model: {
-    color: 'red',
-  },
-};
-
-console.log(carThree.model.color); // returns red
-
-// Task #-1
-
-const fruit: unknown[][] = [
-  [[], 'Apple'],
-];
-
-console.log(fruit[0][1]); // returns 'Apple'
-
-// Task #0
-
-const humanNames = {
-  name: (a: string) => a,
-};
-
-console.log(humanNames.name('Jānis')); // returns Jānis
-
-// Tasks #1
-const math = {
-  sum: () => () => (x: number, y: number) => ({
-    sum: Number(`${x}${y}`),
-  }),
-};
-
-console.log(math.sum()()(1, 3).sum); // returns 13
-
-// Task #2
-const human = () => ({
-  rights: [
-    [],
-    [],
-    [
-      [],
-      {
-        amendment: [{}, [], {
-          paragraph: () => 'Lorem Ipsum',
-        }],
-      },
-    ],
-  ],
-});
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-console.log(human().rights[2][1].amendment[2].paragraph()); // returns 'Lorem Ipsum'
-
-// Task #3
-
-// eslint-disable-next-line max-len
-const mathPow = (x:number, y:number) => () => () => () => () => () => () => () => () => (z:number) => (x + y) ** z;
-
-console.log(mathPow(2, 3)()()()()()()()()(2)); // returns powered x with y and sum powered by Z
-
-// Task #4
-// Take animal array from
-// https://gist.github.com/borlaym/585e2e09dd6abd9b0d0a
-// Filter out Animals with letters "A" "Z" "U" "G" and capitalize it
-
-const letters = ['A', 'Z', 'U', 'G'];
-
-// eslint-disable-next-line max-len
-const filterAnimals = animals.filter((animal: string[]) => letters.includes(animal[0])).map((animal: string) => animal.toUpperCase());
-
-console.log(filterAnimals);
+// console.log('___CLASSWORK___');
+//
+// // Task #-4
+//
+// const car = [{}, {
+//   name: 'Volvo',
+// }];
+//
+// console.log(car[1].name); // returns Volvo
+//
+// // Task #-3
+//
+// const carTwo = {
+//   sum: () => '3000000EUR',
+// };
+//
+// console.log(carTwo.sum()); // returns 3000000EUR
+//
+// // Task #-2
+//
+// const carThree = {
+//   model: {
+//     color: 'red',
+//   },
+// };
+//
+// console.log(carThree.model.color); // returns red
+//
+// // Task #-1
+//
+// const fruit: unknown[][] = [
+//   [[], 'Apple'],
+// ];
+//
+// console.log(fruit[0][1]); // returns 'Apple'
+//
+// // Task #0
+//
+// const humanNames = {
+//   name: (a: string) => a,
+// };
+//
+// console.log(humanNames.name('Jānis')); // returns Jānis
+//
+// // Tasks #1
+// const math = {
+//   sum: () => () => (x: number, y: number) => ({
+//     sum: Number(`${x}${y}`),
+//   }),
+// };
+//
+// console.log(math.sum()()(1, 3).sum); // returns 13
+//
+// // Task #2
+// const human = () => ({
+//   rights: [
+//     [],
+//     [],
+//     [
+//       [],
+//       {
+//         amendment: [{}, [], {
+//           paragraph: () => 'Lorem Ipsum',
+//         }],
+//       },
+//     ],
+//   ],
+// });
+//
+// // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// // @ts-ignore
+// console.log(human().rights[2][1].amendment[2].paragraph()); // returns 'Lorem Ipsum'
+//
+// // Task #3
+//
+// // eslint-disable-next-line max-len
+// const mathPow = (x:number, y:number) =>
+// () => () => () => () => () => () => () => () => (z:number) => (x + y) ** z;
+//
+// console.log(mathPow(2, 3)()()()()()()()()(2)); // returns powered x with y and sum powered by Z
+//
+// // Task #4
+// // Take animal array from
+// // https://gist.github.com/borlaym/585e2e09dd6abd9b0d0a
+// // Filter out Animals with letters "A" "Z" "U" "G" and capitalize it
+//
+// const letters = ['A', 'Z', 'U', 'G'];
+//
+// // eslint-disable-next-line max-len
+// const filterAnimals = animals.filter((animal: string[]) =>
+// letters.includes(animal[0])).map((animal: string) => animal.toUpperCase());
+//
+// console.log(filterAnimals);
 
 // Task #5
 // take array from https://stackoverflow.com/a/20623472/2927424
@@ -110,9 +112,9 @@ console.log(filterAnimals);
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line max-len
-const filterCountries = Object.fromEntries(countries.filter((country: Record<string, unknown>) => Object.entries(country)[1][1].length > 6).map((country: Record<string, unknown>) => Object.entries(country).slice(0, -1)));
-
-console.log(filterCountries);
+// const filterCountries = Object.fromEntries(countries.filter((country: Record<string, unknown>) => Object.entries(country)[1][1].length > 6).map((country: Record<string, unknown>) => Object.entries(country).slice(0, -1)));
+//
+// console.log(filterCountries);
 
 /* SPREAD OPERATOR  */
 console.log('___SPREAD OPERATORS___');
@@ -646,16 +648,26 @@ console.log(rangeFromMinToMax(2, 7)); // [2, 3, 4, 5, 6, 7]
 
 // Function 41
 
-// const arrToObjectByFirstLetter = (arr: string[]): object => (
-//
-// );
-//
+const arrToObjectByFirstLetter = (arr: string[]): { [key: string]: string[] } => {
+  const newObj: { [key: string]: string[] } = {};
+  for (let i = 0; i < arr.length; i += 1) {
+    const item = arr[i];
+    const firstLetter = item[0].toLowerCase();
+    if (!newObj[firstLetter]) {
+      newObj[firstLetter] = [];
+    } else if (newObj[firstLetter].indexOf(item) < 0) {
+      newObj[firstLetter].push(item);
+    }
+  }
+  return newObj;
+};
+
 console.log('Tests of function 41 - arrToObjectByFirstLetter:');
-// console.log(arrToObjectByFirstLetter(['Alf', 'Alice', 'Ben']));
+console.log(arrToObjectByFirstLetter(['Alf', 'Alice', 'Ben']));
 // { a: ['Alf', 'Alice'], b: ['Ben']}
-// console.log(arrToObjectByFirstLetter(['Ant', 'Bear', 'Bird']));
+console.log(arrToObjectByFirstLetter(['Ant', 'Bear', 'Bird']));
 // { a: ['Ant'], b: ['Bear', 'Bird']}
-// console.log(arrToObjectByFirstLetter(['Berlin', 'Paris', 'Prague']));
+console.log(arrToObjectByFirstLetter(['Berlin', 'Paris', 'Prague']));
 // { b: ['Berlin'], p: ['Paris', 'Prague']}
 
 // Function 42
@@ -897,6 +909,35 @@ console.log(replaceEmptyObjValuesWithNull({
 })); // { a: 'a', b: 'b ', c: null, d: null }
 
 // Function 58
+
+// eslint-disable-next-line max-len
+const extractNameSizeWeightFromObj = (a: { [key: string]: string | number }): { [key: string]: string | number } => {
+  const newObj = { ...a };
+  for (const key in newObj) {
+    if (key === 'size') {
+      newObj[key] = `${newObj[key].toString()}cm`;
+    } else if (key === 'weight') {
+      newObj[key] = `${newObj[key].toString()}kg`;
+    }
+  }
+  const newObjEntries = Object.entries(newObj);
+  const filteredObjEntries = newObjEntries.filter(([key]) => key === 'fn' || key === 'ln' || key === 'size' || key === 'weight');
+  return Object.fromEntries(filteredObjEntries);
+};
+
+console.log('Tests of function 58 - extractNameSizeWeightFromObj:');
+console.log(extractNameSizeWeightFromObj({
+  fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67,
+})); // {fn: 'Lisa', ln: 'Müller', size: '175cm', weight: '67kg'}
+console.log(extractNameSizeWeightFromObj({
+  fn: 'Martin', ln: 'Harper', age: 26, email: 'martin.harper@test.de', weight: 102,
+})); // {fn: 'Martin', ln: 'Harper', weight: '102kg'}
+console.log(extractNameSizeWeightFromObj({
+  fn: 'Andrew', ln: 'Harper', age: 81, size: 175, weight: 71,
+})); // {fn: 'Andrew', ln: 'Harper', size: '175cm', weight: '71kg'}
+console.log(extractNameSizeWeightFromObj({
+  fn: 'Matthew', ln: 'Müller', age: 19, email: 'matthew@mueller.de',
+})); // {fn: 'Matthew', ln: 'Müller'}
 
 // Function 59
 
